@@ -3,22 +3,22 @@ import java.util.Date
 import kotlin.random.Random
 
 class Generator {
-    val data = DataSource()
-    val formatter = SimpleDateFormat("dd.MM.YYYY")
-    fun generate(): Person {
+    private val data = DataSource()
+    private val formatter = SimpleDateFormat("dd.MM.YYYY")
+    private fun generate(): Person {
         val name: String
         val lastName: String
         val patronymic: String
         val gender: String
 
-        if (Random.nextBoolean() == true) {
+        if (Random.nextBoolean()) {
             val nameIndex = Random.nextInt(data.femaleName.size)
             name = data.femaleName[nameIndex]
-            var lastNameIndex = Random.nextInt(data.femaleLastname.size)
+            val lastNameIndex = Random.nextInt(data.femaleLastname.size)
             lastName = data.femaleLastname[lastNameIndex]
             val patronymicIndex = Random.nextInt(data.femalePatronymic.size)
             patronymic = data.femalePatronymic[patronymicIndex]
-            gender = "∆ÂÌ"
+            gender = "–ñ–µ–Ω"
         } else {
             val nameIndex = Random.nextInt(data.maleName.size)
             name = data.maleName[nameIndex]
@@ -26,14 +26,14 @@ class Generator {
             lastName = data.maleLastname[lastNameIndex]
             val patronymicIndex = Random.nextInt(data.malePatronymic.size)
             patronymic = data.malePatronymic[patronymicIndex]
-            gender = "ÃÛÊ"
+            gender = "–ú—É–∂"
         }
         val birthdayDate = Date(Random.nextLong(BIRTHDAY_BOUND, System.currentTimeMillis()))
         val birthday = formatter.format(birthdayDate)
         val age = ((System.currentTimeMillis() - birthdayDate.time) / YEAR).toString()
         val nativeCity = data.city[Random.nextInt(data.city.size)]
         val index = Random.nextInt(100000, 999999).toString()
-        val country = "–ÓÒÒËˇ"
+        val country = "–†–æ—Å—Å–∏—è"
         val district = data.district[Random.nextInt(data.district.size)]
         val city = data.city[Random.nextInt(data.city.size)]
         val street = data.street[Random.nextInt(data.street.size)]
@@ -65,7 +65,7 @@ class Generator {
         return list
     }
 
-    companion object {
+    private companion object {
         const val YEAR = 365 * 24 * 60 * 60 * 1000L
         const val BIRTHDAY_BOUND = -48L * YEAR
     }
