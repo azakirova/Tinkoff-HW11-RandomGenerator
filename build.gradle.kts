@@ -13,6 +13,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation("com.itextpdf", "itextpdf", "5.0.6")
 }
 
 tasks.test {
