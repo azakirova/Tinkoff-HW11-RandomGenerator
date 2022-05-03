@@ -1,10 +1,11 @@
+import model.Person
 import java.text.SimpleDateFormat
 import java.util.Date
 import kotlin.random.Random
 
 class Generator {
     private val data = DataSource()
-    private val formatter = SimpleDateFormat("dd.MM.YYYY")
+    private val formatter = SimpleDateFormat("dd-MM-YYYY")
     private fun generate(): Person {
         val name: String
         val lastName: String
@@ -18,7 +19,7 @@ class Generator {
             lastName = data.femaleLastname[lastNameIndex]
             val patronymicIndex = Random.nextInt(data.femalePatronymic.size)
             patronymic = data.femalePatronymic[patronymicIndex]
-            gender = "Жен"
+            gender = "Ж"
         } else {
             val nameIndex = Random.nextInt(data.maleName.size)
             name = data.maleName[nameIndex]
@@ -26,7 +27,7 @@ class Generator {
             lastName = data.maleLastname[lastNameIndex]
             val patronymicIndex = Random.nextInt(data.malePatronymic.size)
             patronymic = data.malePatronymic[patronymicIndex]
-            gender = "Муж"
+            gender = "М"
         }
         val birthdayDate = Date(Random.nextLong(BIRTHDAY_BOUND, System.currentTimeMillis()))
         val birthday = formatter.format(birthdayDate)

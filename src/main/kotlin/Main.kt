@@ -4,8 +4,10 @@ fun main(){
 
     if (n!=null && n>=1 && n<=30){
         val generator = Generator()
-        val q = generator.generate(n)
-        print(q)
+        val listPerson = generator.generate(n)
+        val pdfManager = PDFManager()
+        pdfManager.fillPdfFile(listPerson)
+
     }
     else print("Некорректный ввод")
 }
